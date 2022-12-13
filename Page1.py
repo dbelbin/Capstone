@@ -17,6 +17,8 @@ df = df.rename(columns = {'LONGITUDE':'lon'})
 
 def show_page1():
     st.markdown('<h3 style = "text-align: center;">Data points used to create the prediction model</div>', unsafe_allow_html=True)
+
+
     st.pydeck_chart(pdk.Deck(
         map_style=None,
         initial_view_state=pdk.ViewState(
@@ -35,3 +37,4 @@ def show_page1():
             ),
         ],
     ))
+    st.markdown('<h6 style = "text-align: center;">Data points represent 1 year of sold houses below $500,000</div>',unsafe_allow_html=True)

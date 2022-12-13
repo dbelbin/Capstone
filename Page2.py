@@ -24,18 +24,18 @@ def show_page2():
     st.markdown('<h4 style = "text-align: center;">Median Phoenix Home Prices by Zipcode for previous 12 months</div>',
                 unsafe_allow_html=True)
 
-    prices_graph = alt.Chart(subset_data).mark_line().encode(
+    prices_graph = alt.Chart(subset_data).mark_point().encode(
         x=alt.X('SOLDDATE',  title='Sold Date'),
-        y=alt.Y('median(PRICE):Q', title='Price'),
+        y=alt.Y('PRICE:Q', title='Price'),
         color = 'ZIPCODE:N',
     ).properties(
         width = 800,
         height = 600
-    ).configure_axis(
-        labelFontSize = 15,
-        titleFontSize = 18
     )
-    st.altair_chart(prices_graph)
+   
+    prices_line = prices_graph.transform_regression('SOLDDATE','PRICE').mark_line()
+    graph = prices_graph+prices_line
+    st.altair_chart(graph)
 
     st.write(subset_data)
 

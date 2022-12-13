@@ -6,10 +6,10 @@ from Page2 import show_page2
 from Page3 import show_page3
 from prediction import show_prediction
 
-
+st.sidebar.image('Sold.png', width=150)
 page = st.sidebar.title("Pages")
 page = st.sidebar.selectbox("Data Exploration or Prediction",("Home","Map of Historical Home Sales","Historical Prices by Zip Code","Prices by Feature", "Calculator"))
-st.sidebar.image('Sold.png')
+
 if page == "Home":
     show_home()
 elif page == "Map of Historical Home Sales":
