@@ -44,6 +44,7 @@ def show_prediction():
         X = scaler.transform(X)
 
         prediction = RF_loaded.predict(X)
+        
         st._show(prediction)
 
 
