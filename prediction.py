@@ -38,8 +38,8 @@ def show_prediction():
         submit_button = st.form_submit_button(label = 'Calculate Predicted Price')
 
     if submit_button:
-        X=encoder.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA]])
-        X = scaler.transform(X)
+        
+        X = scaler.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA]])
 
         prediction = RF_loaded.predict(X)
         st._show(prediction)
