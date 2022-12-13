@@ -12,6 +12,8 @@ model = load_model()
 
 RF_loaded = model["model"]
 
+with open('encoder.pkl', 'rb') as f:
+    encoder=pickle.load(f)
 with open('scaler.pkl', 'rb') as f:
     scaler=pickle.load(f)
 
@@ -38,8 +40,8 @@ def show_prediction():
         submit_button = st.form_submit_button(label = 'Calculate Predicted Price')
 
     if submit_button:
-
-        X = scaler.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA]])
+        X = encoder.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA]])
+        X = scaler.transform(X)
 
         prediction = RF_loaded.predict(X)
         st._show(prediction)
