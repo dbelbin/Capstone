@@ -12,9 +12,6 @@ model = load_model()
 
 RF_loaded = model["model"]
 
-with open('encoder.pkl', 'rb') as f:
-    encoder=pickle.load(f)
-
 with open('scaler.pkl', 'rb') as f:
     scaler=pickle.load(f)
 
