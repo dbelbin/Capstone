@@ -13,40 +13,24 @@ def load_data():
         data = pickle.load(f)
     return data
 data = load_data()
-data['ZIPCODE'] = data['ZIPCODE'].apply(np.int64)
+
+
+data['POOL'] = np.where(data['POOL'] == 1,'Y','N')
+data['HOA'] = np.where(data['HOA'] == 1,'Y','N')
+data = data[['ZIPCODE','PRICE','BEDS','BATHS','SQFT','LOTSIZE','YEARBUILT','POOL','HOA']]
+data['ZIPCODE']=data['ZIPCODE'].astype('int64')
+data['YEARBUILT']=data['YEARBUILT'].astype('int64')
+data['SQFT']=data['SQFT'].astype('int64')
+data['LOTSIZE']=data['LOTSIZE'].astype('int64')
+data['BEDS']=data['BEDS'].astype('int32')
 
 def show_page3():
-    subset_data = data
-    metrics = ['BEDS','BATHS','SQFT','LOTSIZE','YEARBUILT','POOL','HOA']
-    cols = st.selectbox('House Features to view', metrics)
+    st.header('Median statistics based on ZipCode, Pool and HOA')
+    statistics = data.groupby(['ZIPCODE','POOL','HOA']).median('PRICE')
+    #statistics = statistics.reset_index(inplace=True)
+    statistics = statistics.rename_axis(index=['ZIPCODE','POOL','HOA'])
+    st.dataframe(statistics)
 
-    if cols in metrics:
-           metrics_to_show = cols
-
-    st.markdown('<h4 style = "text-align: center;">Choose features to view median prices for houses sold</div>',
-                unsafe_allow_html=True)
-
- #ZIPCODE using multiselect streamlit tool
-    features_input = st.multiselect(cols,data.groupby(metrics).count().reset_index()[[cols]].tolist())
-
-    if len(features_input)>0:
-        subset_data = data[data[[cols]].isin(features_input)]
-
-    st.markdown('<h4 style = "text-align: center;">Median Phoenix Home Prices by Zipcode for previous 12 months</div>',
-                unsafe_allow_html=True)
-
-    prices_graph_by_metric = alt.Chart(subset_data).mark_line().encode(
-        x=alt.X('SOLDDATE',  title='Sold Date'),
-        y=alt.Y('median(PRICE):Q', title='Price'),
-        #color = 'ZIPCODE:N',
-    ).properties(
-        width = 800,
-        height = 600
-    ).configure_axis(
-        labelFontSize = 15,
-        titleFontSize = 18
-    )
-    st.altair_chart(prices_graph_by_metric)
 
 
 
