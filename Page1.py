@@ -16,6 +16,9 @@ df = df.rename(columns = {'LATITUDE':'lat'})
 df = df.rename(columns = {'LONGITUDE':'lon'})
 
 def show_page1():
+
+    st.markdown('<h2 style = "text-align: center;">Map of Historical Home Sales</div>', unsafe_allow_html=True)
+
     st.markdown('<h3 style = "text-align: center;">Data points used to create the prediction model</div>', unsafe_allow_html=True)
 
 

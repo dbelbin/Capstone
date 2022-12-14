@@ -12,6 +12,7 @@ def load_data():
 model_data = load_data()
 
 def show_page4():
+    st.markdown('<h2 style = "text-align: center;">Correlation of Home Features</div>', unsafe_allow_html=True)
 
     fig, ax=plt.subplots()
     sn.heatmap(data = model_data.corr(),ax=ax)

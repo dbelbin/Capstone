@@ -25,6 +25,8 @@ data['LOTSIZE']=data['LOTSIZE'].astype('int64')
 data['BEDS']=data['BEDS'].astype('int32')
 
 def show_page3():
+    st.markdown('<h2 style = "text-align: center;">Statistics of Home Sales</div>', unsafe_allow_html=True)
+
     st.header('Median statistics based on ZipCode, Pool and HOA')
     statistics = data.groupby(['ZIPCODE','POOL','HOA']).median('PRICE')
     #statistics = statistics.reset_index(inplace=True)

@@ -12,6 +12,8 @@ data = load_data()
 data['ZIPCODE'] = data['ZIPCODE'].apply(np.int64)
 
 def show_page2():
+    st.markdown('<h2 style = "text-align: center;">Historical Prices by Zipcode</div>', unsafe_allow_html=True)
+
     st.markdown('<h4 style = "text-align: center;">Choose one or more zipcodes to view median prices for houses sold</div>',
                 unsafe_allow_html=True)
     subset_data = data
@@ -32,7 +34,7 @@ def show_page2():
         width = 800,
         height = 600
     )
-   
+
     prices_line = prices_graph.transform_regression('SOLDDATE','PRICE').mark_line()
     graph = prices_graph+prices_line
     st.altair_chart(graph)
