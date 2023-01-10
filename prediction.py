@@ -47,6 +47,7 @@ def show_prediction():
         prediction = RF_loaded.predict(X)
 
         st._show(prediction)
+        st.write("""### The MAE or average error between predictions and actuals is $15,932 """)
 
 
 
