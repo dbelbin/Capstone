@@ -17,7 +17,7 @@ data = load_data()
 
 data['POOL'] = np.where(data['POOL'] == 1,'Y','N')
 data['HOA'] = np.where(data['HOA'] == 1,'Y','N')
-data = data[['ZIPCODE','PRICE','BEDS','BATHS','SQFT','LOTSIZE','YEARBUILT','POOL','HOA']]
+data = data[['ZIPCODE','PRICE','BEDS','BATHS','SQFT','LOTSIZE','YEARBUILT','POOL','HOA','RATE']]
 data['ZIPCODE']=data['ZIPCODE'].astype('int64')
 data['YEARBUILT']=data['YEARBUILT'].astype('int64')
 data['SQFT']=data['SQFT'].astype('int64')

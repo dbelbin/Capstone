@@ -12,8 +12,7 @@ model = load_model()
 
 RF_loaded = model["model"]
 
-with open('encoder.pkl', 'rb') as f:
-    encoder=pickle.load(f)
+
 with open('scaler.pkl', 'rb') as f:
     scaler=pickle.load(f)
 
@@ -28,6 +27,7 @@ def show_prediction():
         HOA = ('Y','N')
 
 
+
         ZIPCODE = st.selectbox("Select the ZipCode",ZIPCODE)
         BEDS = st.selectbox("Select the Number of Bedrooms", BEDS)
         BATHS = st.selectbox("Select the Number of Bathrooms",BATHS)
@@ -36,12 +36,13 @@ def show_prediction():
         YEARBUILT = st.number_input("Enter the year the house was built", min_value = 1915, max_value=2023, value = 2015)
         POOL = st.checkbox("Pool", help("Check the box if the house has a pool"))
         HOA = st.checkbox("HOA", help("Check the box if the house is in an HOA"))
+        RATE = st.number_input("Enter the expected 30 Yr Mortgage Rate", min_value = 2.5, max_value=10.0, value = 6.5)
 
         submit_button = st.form_submit_button(label = 'Calculate Predicted Price')
 
     if submit_button:
-        X = encoder.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA]])
-        X = scaler.transform(X)
+        X = scaler.transform([[ZIPCODE,BEDS,BATHS,SQFT,LOTSIZE,YEARBUILT,POOL,HOA,RATE]])
+
 
         prediction = RF_loaded.predict(X)
 

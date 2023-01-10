@@ -40,4 +40,4 @@ def show_page1():
             ),
         ],
     ))
-    st.markdown('<h6 style = "text-align: center;">Data points represent 1 year of sold houses below $500,000</div>',unsafe_allow_html=True)
+    st.markdown('<h6 style = "text-align: center;">Data points represent sold houses between August 2021 and January 2023 below $500,000</div>',unsafe_allow_html=True)
