@@ -50,7 +50,7 @@ def show_prediction():
         a = df[0].iat[0]
         b = f"${a:,.0f}"
 
-        st.write('<p style = " font-size:18px; color: black;"> The MAE or average absolute error between the predicted values and the actual values is $15,932. The predicted value for the house is: ',b,'.</p>', unsafe_allow_html = True)
+        st.write('<p style = " font-size:18px; color: black;"> The MAE or average absolute error between the predicted values and the actual values is $15,932. \n The predicted value for the house is: ',b,'.</p>', unsafe_allow_html = True)
 
 
 
