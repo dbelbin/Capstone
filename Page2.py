@@ -12,9 +12,9 @@ data = load_data()
 data['ZIPCODE'] = data['ZIPCODE'].apply(np.int64)
 
 def show_page2():
-    st.markdown('<h2 style = "text-align: center;">Historical Prices by Zipcode</div>', unsafe_allow_html=True)
+    st.markdown('<h2 style = "text-align: center;">Historical Prices by Zip Code</div>', unsafe_allow_html=True)
 
-    st.markdown('<h4 style = "text-align: center;">Choose one or more zipcodes to view median prices for houses sold</div>',
+    st.markdown('<h4 style = "text-align: center;">Choose one or more zip codes to view median prices for houses sold</div>',
                 unsafe_allow_html=True)
     subset_data = data
  #ZIPCODE using multiselect streamlit tool
@@ -23,7 +23,7 @@ def show_page2():
     if len(zipcode_input)>0:
         subset_data = data[data['ZIPCODE'].isin(zipcode_input)]
 
-    st.markdown('<h4 style = "text-align: center;">Median Phoenix Home Prices by Zipcode for previous 12 months</div>',
+    st.markdown('<h4 style = "text-align: center;">Median Phoenix Home Prices by zip code November 2021 through January 2023</div>',
                 unsafe_allow_html=True)
 
     prices_graph = alt.Chart(subset_data).mark_point().encode(
