@@ -1,7 +1,6 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import numpy as np
 
 def load_model():
    with open('trained_model.pkl', 'rb') as file:
