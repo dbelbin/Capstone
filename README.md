@@ -4,4 +4,4 @@ footage of the house, square footage of the lot, the year the house was built, w
 The data used to build the model was obtained through manual downloads from Redfin.com downloaded in batches and then loaded into python where it was cleaned and analyzed
 using standard data exploratory analysis. Multiple models were tested and the Random Forest Regression model was choosen with the highest r^2 and lowest MAE of the tested
 models. Once the model was chosen, the parameters were tuned to increase the accuracy. The streamlit portion of the model was built in multiple python pages and the model 
-is deployed on streamlit cloud.
+is deployed on streamlit cloud. Within the GitHub repository is a digigal poster representing the project, a user guide for the Streamlit app, as well as a system administrator guide to update and maintain the app.
